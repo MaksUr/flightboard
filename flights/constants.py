@@ -26,6 +26,10 @@ AIRPORT_NAME_HELP = ''
 AIRPORT_CODE = 'code'
 AIRPORT_CODE_KEY = 'Код аэропорта'
 AIRPORT_CODE_HELP = 'Должен соответсвовать коду IATA. Состоит из 3 букв.'
+# city
+AIRPORT_CITY = 'city'
+AIRPORT_CITY_KEY = CITY_VERBOSE_NAME
+AIRPORT_CITY_HELP = ''
 
 # model Airline
 AIRLINE_VERBOSE_NAME = 'Авиалиния'
@@ -46,5 +50,9 @@ FLIGHT_VERBOSE_NAME_PLURAL = 'Рейсы'
 FLIGHT_NUMBER = 'number'
 FLIGHT_NUMBER_KEY = 'Номер рейса'
 FLIGHT_NUMBER_HELP = 'Состоит из цифр, не более четырех.'
+# airline
+FLIGHT_AIRLINE = 'airline'
+FLIGHT_AIRLINE_KEY = AIRLINE_VERBOSE_NAME
+FLIGHT_AIRLINE_HELP = ''
 
 
