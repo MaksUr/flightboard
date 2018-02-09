@@ -2,11 +2,12 @@ from django.db import models
 
 # Create your models here.
 from django.db.models import CharField, IntegerField, ForeignKey
+from timezone_field import TimeZoneField
 
 from flights.constants import FLIGHT_NUMBER_KEY, AIRLINE_NAME_KEY, AIRLINE_CODE_KEY, \
     AIRLINE_VERBOSE_NAME, AIRLINE_VERBOSE_NAME_PLURAL, FLIGHT_VERBOSE_NAME, FLIGHT_VERBOSE_NAME_PLURAL, \
     CITY_VERBOSE_NAME, CITY_VERBOSE_NAME_PLURAL, CITY_NAME_KEY, CITY_CODE_KEY, AIRPORT_VERBOSE_NAME, \
-    AIRPORT_VERBOSE_NAME_PLURAL, AIRPORT_NAME_KEY, AIRPORT_CODE_KEY, AIRPORT_CITY_KEY
+    AIRPORT_VERBOSE_NAME_PLURAL, AIRPORT_NAME_KEY, AIRPORT_CODE_KEY, AIRPORT_CITY_KEY, CITY_TIMEZONE_KEY
 from flights.validators import flight_number_validate, city_code_validate, airport_code_validate, airline_code_validate
 
 
@@ -16,7 +17,7 @@ class City(models.Model):
         verbose_name_plural = CITY_VERBOSE_NAME_PLURAL
     name = CharField(CITY_NAME_KEY, max_length=60)
     code = CharField(CITY_CODE_KEY, max_length=3, validators=[city_code_validate])  # IATA 3-letter city code
-    # timezone = TimeZoneField(CITY_TIMEZONE_KEY)  TODO: add timezone
+    timezone = TimeZoneField(verbose_name=CITY_TIMEZONE_KEY)
 
     def __str__(self):
         return self.name

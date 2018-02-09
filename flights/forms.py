@@ -13,12 +13,12 @@ class CityForm(ModelForm):
         fields = [
             CITY_NAME,
             CITY_CODE,
-            # CITY_TIMEZONE,
+            CITY_TIMEZONE,
         ]
         help_texts = {
             CITY_NAME: CITY_NAME_HELP,
             CITY_CODE: CITY_CODE_HELP,
-            # CITY_TIMEZONE: CITY_TIMEZONE_HELP,
+            CITY_TIMEZONE: CITY_TIMEZONE_HELP,
         }
 
 
