@@ -54,5 +54,19 @@ FLIGHT_NUMBER_HELP = 'Состоит из цифр, не более четыре
 FLIGHT_AIRLINE = 'airline'
 FLIGHT_AIRLINE_KEY = AIRLINE_VERBOSE_NAME
 FLIGHT_AIRLINE_HELP = ''
+# departure
+FLIGHT_DEPARTURE = 'departure'
+FLIGHT_DEPARTURE_KEY = 'Город вылета'
+FLIGHT_DEPARTURE_HELP = ''
+# arrival
+FLIGHT_ARRIVAL = 'arrival'
+FLIGHT_ARRIVAL_KEY = 'Город прибытия'
+FLIGHT_ARRIVAL_HELP = ''
+# duration
+FLIGHT_DURATION = 'duration'
+FLIGHT_DURATION_KEY = 'Продолжительность полета'
+FLIGHT_DURATION_HELP = 'Используйте формат D HH:MM:SS, где D - количество дней, H - часов, M - минут, S - секунд.'
 
-
+# model ScheduleFlight
+# time_of_departure
+# status
