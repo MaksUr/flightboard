@@ -75,10 +75,9 @@ SCHEDULE_FLIGHT_TIME_OF_DEPARTURE = 'time_of_departure'
 SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY = 'Фактическое местное время вылета.'
 SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_HELP = 'Время прилета высчитывается автоматически исходя из продолжительности рейса.'
 SCHEDULE_FLIGHT_STATUS_CHOICES = (
-    'В полете',
-    'Прибыл',
-    'Регистрация',
-    'Задержан',
+    ('flying', 'В полете'),
+    ('arrive', 'Прибыл'),
+    ('registration', 'Регистрация'),
 )
 # status
 SCHEDULE_FLIGHT_STATUS = 'status'
