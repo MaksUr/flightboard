@@ -1,4 +1,4 @@
-
+AIRPORT_LOCATION = 'SVO'
 # model City
 CITY_VERBOSE_NAME = 'Город'
 CITY_VERBOSE_NAME_PLURAL = 'Города'
@@ -68,5 +68,23 @@ FLIGHT_DURATION_KEY = 'Продолжительность полета'
 FLIGHT_DURATION_HELP = 'Используйте формат D HH:MM:SS, где D - количество дней, H - часов, M - минут, S - секунд.'
 
 # model ScheduleFlight
+SCHEDULE_FLIGHT_VERBOSE_NAME = 'Фактический рейс'
+SCHEDULE_FLIGHT_VERBOSE_NAME_PLURAL = 'Фактические рейсы'
 # time_of_departure
+SCHEDULE_FLIGHT_TIME_OF_DEPARTURE = 'time_of_departure'
+SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY = 'Фактическое местное время вылета.'
+SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_HELP = 'Время прилета высчитывается автоматически исходя из продолжительности рейса.'
+SCHEDULE_FLIGHT_STATUS_CHOICES = (
+    'В полете',
+    'Прибыл',
+    'Регистрация',
+    'Задержан',
+)
 # status
+SCHEDULE_FLIGHT_STATUS = 'status'
+SCHEDULE_FLIGHT_STATUS_KEY = 'Статус рейса.'
+SCHEDULE_FLIGHT_STATUS_HELP = ''
+# flight
+SCHEDULE_FLIGHT_FLIGHT = 'flight'
+SCHEDULE_FLIGHT_FLIGHT_KEY = 'Рейс'
+SCHEDULE_FLIGHT_FLIGHT_HELP = 'Если необходимый рейс отсутствует, то его необходимо добавить.'
