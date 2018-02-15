@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django_tables2 import RequestConfig
+
 
 # Create your views here.
 from django.utils import timezone
@@ -8,11 +10,12 @@ from flights.tables import ScheduleFlightTable
 
 
 def flights(request):
+    table = ScheduleFlightTable(ScheduleFlight.objects.all())
+    RequestConfig(request).configure(table)
     return render(
         request,
         'flights/flight_list.html', {
-            'flights': ScheduleFlightTable(ScheduleFlight.objects.all()),
+            'flights': table,
             'now': timezone.now(),
-            # 'simple_table': SimpleTable(simple_table_data)
         }
     )

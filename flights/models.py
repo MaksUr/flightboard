@@ -74,8 +74,16 @@ class ScheduleFlight(models.Model):
         verbose_name_plural = SCHEDULE_FLIGHT_VERBOSE_NAME_PLURAL
 
     time_of_departure = DateTimeField(SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY)
+    time_of_arrival = DateTimeField('Время прибытия')
     status = CharField(SCHEDULE_FLIGHT_STATUS_KEY, max_length=20, choices=SCHEDULE_FLIGHT_STATUS_CHOICES)
     flight = ForeignKey(Flight, verbose_name=SCHEDULE_FLIGHT_FLIGHT_KEY)
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        self.time_of_arrival = self.time_of_departure + self.flight.duration
+        return super().save(
+            force_insert=False, force_update=False, using=None,
+            update_fields=None)
 
     def __str__(self):
         return '{flight}: {time}'.format(flight=self.flight, time=self.time_of_departure)
@@ -86,10 +94,6 @@ class ScheduleFlight(models.Model):
             return True
         else:
             return False
-
-    def arrival_time(self):
-        return self.time_of_departure + self.flight.duration
-
 
 
 

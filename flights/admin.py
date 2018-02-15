@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from flights.forms import CityForm, AirportForm, AirlineForm, FlightForm
-from flights.models import City, Airport, Airline, Flight
+from flights.forms import CityForm, AirportForm, AirlineForm, FlightForm, ScheduleFlightForm
+from flights.models import City, Airport, Airline, Flight, ScheduleFlight
 
 
 class AdminCity(admin.ModelAdmin):
@@ -23,3 +23,8 @@ admin.site.register(Airline, AdminAirline)
 class AdminFlight(admin.ModelAdmin):
     form = FlightForm
 admin.site.register(Flight, AdminFlight)
+
+
+class AdminScheduleFlight(admin.ModelAdmin):
+    form = ScheduleFlightForm
+admin.site.register(ScheduleFlight, AdminScheduleFlight)
