@@ -1,6 +1,7 @@
 from django.db import models
 # Create your models here.
-from django.db.models import CharField, IntegerField, ForeignKey, TimeField, DurationField
+from django.db.models import CharField, IntegerField, ForeignKey, TimeField, DurationField, DateTimeField
+from django.utils import timezone
 from timezone_field import TimeZoneField
 
 from flights.constants import FLIGHT_NUMBER_KEY, AIRLINE_NAME_KEY, AIRLINE_CODE_KEY, \
@@ -72,10 +73,23 @@ class ScheduleFlight(models.Model):
         verbose_name = SCHEDULE_FLIGHT_VERBOSE_NAME
         verbose_name_plural = SCHEDULE_FLIGHT_VERBOSE_NAME_PLURAL
 
-    time_of_departure = TimeField(SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY)
+    time_of_departure = DateTimeField(SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY)
     status = CharField(SCHEDULE_FLIGHT_STATUS_KEY, max_length=20, choices=SCHEDULE_FLIGHT_STATUS_CHOICES)
     flight = ForeignKey(Flight, verbose_name=SCHEDULE_FLIGHT_FLIGHT_KEY)
 
     def __str__(self):
         return '{flight}: {time}'.format(flight=self.flight, time=self.time_of_departure)
+
+    def arrival_status(self):
+        d = timezone.now() - self.time_of_departure
+        if d > self.flight.duration:
+            return True
+        else:
+            return False
+
+    def arrival_time(self):
+        return self.time_of_departure + self.flight.duration
+
+
+
 
