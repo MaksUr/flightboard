@@ -56,15 +56,15 @@ FLIGHT_AIRLINE_KEY = AIRLINE_VERBOSE_NAME
 FLIGHT_AIRLINE_HELP = ''
 # departure
 FLIGHT_DEPARTURE = 'departure'
-FLIGHT_DEPARTURE_KEY = 'Город вылета'
+FLIGHT_DEPARTURE_KEY = 'Аэропорт вылета'
 FLIGHT_DEPARTURE_HELP = ''
 # arrival
 FLIGHT_ARRIVAL = 'arrival'
-FLIGHT_ARRIVAL_KEY = 'Город прибытия'
+FLIGHT_ARRIVAL_KEY = 'Аэропорт прибытия'
 FLIGHT_ARRIVAL_HELP = ''
 # duration
 FLIGHT_DURATION = 'duration'
-FLIGHT_DURATION_KEY = 'Продолжительность полета'
+FLIGHT_DURATION_KEY = 'В пути'
 FLIGHT_DURATION_HELP = 'Используйте формат D HH:MM:SS, где D - количество дней, H - часов, M - минут, S - секунд.'
 
 # model ScheduleFlight
@@ -72,13 +72,17 @@ SCHEDULE_FLIGHT_VERBOSE_NAME = 'Фактический рейс'
 SCHEDULE_FLIGHT_VERBOSE_NAME_PLURAL = 'Фактические рейсы'
 # time_of_departure
 SCHEDULE_FLIGHT_TIME_OF_DEPARTURE = 'time_of_departure'
-SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY = 'Фактическое местное время вылета.'
+SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY = 'Время вылета.'
 SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_HELP = 'Время прилета высчитывается автоматически исходя из продолжительности рейса.'
 SCHEDULE_FLIGHT_STATUS_CHOICES = (
     ('flying', 'В полете'),
     ('arrive', 'Прибыл'),
     ('registration', 'Регистрация'),
 )
+# time_of_arrival
+SCHEDULE_FLIGHT_TIME_OF_ARRIVAL = 'time_of_arrival'
+SCHEDULE_FLIGHT_TIME_OF_ARRIVAL_KEY = 'Фактическое местное время прибытия.'
+SCHEDULE_FLIGHT_TIME_OF_ARRIVAL_HELP = ''
 # status
 SCHEDULE_FLIGHT_STATUS = 'status'
 SCHEDULE_FLIGHT_STATUS_KEY = 'Статус рейса.'

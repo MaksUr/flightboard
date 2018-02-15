@@ -37,6 +37,9 @@ class Airport(models.Model):
     def __str__(self):
         return self.name
 
+    def info(self):
+        return '{city} ({airport})'.format(city=self.city.name, airport=self.code)
+
 
 class Airline(models.Model):
     class Meta:
@@ -60,12 +63,14 @@ class Flight(models.Model):
     duration = DurationField(FLIGHT_DURATION_KEY, )
 
     def __str__(self):
-        return '{airline_code}-{flight_code:04} ({dep}-{arr})'.format(
-            airline_code=self.airline.code,
-            flight_code=self.number,
+        return '{codename} ({dep}-{arr})'.format(
+            codename=self.codename(),
             dep=self.departure.name,
             arr=self.arrival.name
         )
+
+    def codename(self):
+        return '{airline_code}-{flight_code:04}'.format(airline_code=self.airline.code, flight_code=self.number,)
 
 
 class ScheduleFlight(models.Model):
