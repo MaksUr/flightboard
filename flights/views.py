@@ -12,7 +12,7 @@ class FlightList(SingleTableMixin, FilterView):
     model = ScheduleFlight
     table_class = ScheduleFlightTable
     template_name = 'flights/flight_list.html'
-    # filterset_class = FlightFilter
+    filterset_class = FlightFilter
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
