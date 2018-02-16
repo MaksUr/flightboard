@@ -6,12 +6,12 @@ from timezone_field import TimeZoneField
 
 from flights.constants import FLIGHT_NUMBER_KEY, AIRLINE_NAME_KEY, AIRLINE_CODE_KEY, \
     AIRLINE_VERBOSE_NAME, AIRLINE_VERBOSE_NAME_PLURAL, FLIGHT_VERBOSE_NAME, FLIGHT_VERBOSE_NAME_PLURAL, \
-    CITY_VERBOSE_NAME, CITY_VERBOSE_NAME_PLURAL, CITY_NAME_KEY, CITY_CODE_KEY, AIRPORT_VERBOSE_NAME, \
+    CITY_VERBOSE_NAME, CITY_VERBOSE_NAME_PLURAL, CITY_NAME_KEY, CITY_COUNTRY_CODE_KEY, AIRPORT_VERBOSE_NAME, \
     AIRPORT_VERBOSE_NAME_PLURAL, AIRPORT_NAME_KEY, AIRPORT_CODE_KEY, AIRPORT_CITY_KEY, CITY_TIMEZONE_KEY, \
     FLIGHT_AIRLINE_KEY, FLIGHT_DEPARTURE_KEY, FLIGHT_ARRIVAL_KEY, FLIGHT_DURATION_KEY, SCHEDULE_FLIGHT_VERBOSE_NAME, \
     SCHEDULE_FLIGHT_VERBOSE_NAME_PLURAL, SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY, \
     SCHEDULE_FLIGHT_STATUS_CHOICES, SCHEDULE_FLIGHT_FLIGHT_KEY, SCHEDULE_FLIGHT_STATUS_KEY
-from flights.validators import flight_number_validate, city_code_validate, airport_code_validate, airline_code_validate
+from flights.validators import flight_number_validate, country_code_validate, airport_code_validate, airline_code_validate
 
 
 class City(models.Model):
@@ -19,7 +19,7 @@ class City(models.Model):
         verbose_name = CITY_VERBOSE_NAME
         verbose_name_plural = CITY_VERBOSE_NAME_PLURAL
     name = CharField(CITY_NAME_KEY, max_length=60)
-    code = CharField(CITY_CODE_KEY, max_length=3, validators=[city_code_validate])  # IATA 3-letter city code
+    country_code = CharField(CITY_COUNTRY_CODE_KEY, max_length=3, validators=[country_code_validate])  # 2-letter city country_code
     timezone = TimeZoneField(verbose_name=CITY_TIMEZONE_KEY)
 
     def __str__(self):

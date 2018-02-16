@@ -6,10 +6,10 @@ CITY_VERBOSE_NAME_PLURAL = 'Города'
 CITY_NAME = 'name'
 CITY_NAME_KEY = 'Название города'
 CITY_NAME_HELP = ''
-# code
-CITY_CODE = 'code'
-CITY_CODE_KEY = 'Код города'
-CITY_CODE_HELP = 'Должен соответсвовать коду IATA. Состоит из 3 букв.'
+# country_code
+CITY_COUNTRY_CODE = 'country_code'
+CITY_COUNTRY_CODE_KEY = 'Код страны'
+CITY_COUNTRY_CODE_HELP = 'Состоит из 2 букв.'
 # timezone
 CITY_TIMEZONE = 'timezone'
 CITY_TIMEZONE_KEY = 'Часовой пояс'
