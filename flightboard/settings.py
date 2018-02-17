@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'flights.apps.FlightsConfig',
     'timezone_field',
     'django_tables2',
+    'django_filters',
+    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

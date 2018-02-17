@@ -5,8 +5,13 @@ from django.core.exceptions import ValidationError
 PATTERN_CODE = re.compile(r'^([A-Z]){3}$', re.IGNORECASE)
 CODE_ERROR_MESSAGE = '"{code}" имеет неверное значение. Код должен состоять из трех букв.'
 
-PATTERN_AIRLINE_CODE = re.compile(r'^([A-Z\d]){2}$', re.IGNORECASE)
+PATTERN_2LETTER_CODE = re.compile(r'^([A-Z\d]){2}$', re.IGNORECASE)
+
+PATTERN_AIRLINE_CODE = PATTERN_2LETTER_CODE
 CODE_AIRLINE_ERROR_MESSAGE = '"{code}" имеет неверное значение. Код авиакомпании должен состоять из 2 символов.'
+
+PATTERN_COUNTRY_CODE = PATTERN_2LETTER_CODE
+CODE_COUNTRY_ERROR_MESSAGE = '"{code}" имеет неверное значение. Код страны должен состоять из 2 символов.'
 
 
 def code_validate(code):
@@ -19,13 +24,15 @@ def code_validate(code):
         raise ValidationError(CODE_ERROR_MESSAGE.format(code=code))
 
 
-def city_code_validate(city_code):
+def country_code_validate(city_code):
     """
 
     :type city_code: str
     """
     # TODO: add link to specification
-    code_validate(city_code)
+    m = re.match(PATTERN_COUNTRY_CODE, city_code)
+    if m is None:
+        raise ValidationError(CODE_COUNTRY_ERROR_MESSAGE.format(code=city_code))
 
 
 def airport_code_validate(airport_code):

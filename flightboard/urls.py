@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from flights.views import flights
+from flights.views import FlightList
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', flights)
+    url(r'^$', FlightList.as_view())
 ]
