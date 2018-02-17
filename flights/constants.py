@@ -1,4 +1,5 @@
 AIRPORT_LOCATION = 'SVO'
+TIMEZONE_LOCATION = 'Asia/Yekaterinburg'
 # model City
 CITY_VERBOSE_NAME = 'Город'
 CITY_VERBOSE_NAME_PLURAL = 'Города'

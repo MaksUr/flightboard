@@ -3,6 +3,11 @@ import django_tables2 as tables
 from flights.models import ScheduleFlight
 
 
+class TimeColumn(tables.Column):
+    def render(self, value):
+        return value.info
+
+
 class AirportColumn(tables.Column):
     def render(self, value):
         return value.info

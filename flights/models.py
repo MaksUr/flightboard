@@ -35,7 +35,7 @@ class Airport(models.Model):
     city = ForeignKey(City, verbose_name=AIRPORT_CITY_KEY)
 
     def __str__(self):
-        return self.name
+        return self.info()
 
     def info(self):
         return '{city} ({airport})'.format(city=self.city.name, airport=self.code)
@@ -49,7 +49,7 @@ class Airline(models.Model):
     code = CharField(AIRLINE_CODE_KEY, max_length=2, validators=[airline_code_validate])  # IATA 2-letter code
 
     def __str__(self):
-        return self.name
+        return '{code} {name}'.format(name=self.name, code=self.code)
 
 
 class Flight(models.Model):
