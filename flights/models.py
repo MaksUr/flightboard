@@ -1,6 +1,6 @@
 from django.db import models
 # Create your models here.
-from django.db.models import CharField, IntegerField, ForeignKey, TimeField, DurationField, DateTimeField
+from django.db.models import CharField, IntegerField, ForeignKey, DurationField, DateTimeField
 from django.utils import timezone
 from timezone_field import TimeZoneField
 
@@ -12,7 +12,8 @@ from flights.constants import FLIGHT_NUMBER_KEY, AIRLINE_NAME_KEY, AIRLINE_CODE_
     SCHEDULE_FLIGHT_VERBOSE_NAME_PLURAL, SCHEDULE_FLIGHT_TIME_OF_DEPARTURE_KEY, \
     SCHEDULE_FLIGHT_STATUS_CHOICES, SCHEDULE_FLIGHT_FLIGHT_KEY, SCHEDULE_FLIGHT_STATUS_KEY, \
     SCHEDULE_FLIGHT_TIME_OF_ARRIVAL_KEY
-from flights.validators import flight_number_validate, country_code_validate, airport_code_validate, airline_code_validate
+from flights.validators import flight_number_validate, country_code_validate, airport_code_validate, \
+    airline_code_validate
 
 
 class City(models.Model):

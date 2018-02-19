@@ -18,6 +18,7 @@ class FlightList(SingleTableMixin, FilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
+        context['flight_count'] = len(self.object_list)
         return context
 
 
