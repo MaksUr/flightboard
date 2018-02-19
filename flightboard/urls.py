@@ -16,10 +16,17 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from flights.views import ArriveFlightList, DepartFlightList
+from flights.views import ArriveFlightList, DepartFlightList, CityDetail, AirportDetail, AirlineDetail, FlightDetail, \
+    ScheduleFlightDetail, ScheduleFlightList
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', ArriveFlightList.as_view(), name='arrive'),
-    url(r'^depart/', DepartFlightList.as_view(), name='depart'),
+    url(r'^depart/$', DepartFlightList.as_view(), name='depart'),
+    url(r'^api_city/(?P<pk>([0-9]+))/$', CityDetail.as_view(), name='api_city'),
+    url(r'^api_airport/(?P<pk>([0-9]+))/$', AirportDetail.as_view(), name='api_airport'),
+    url(r'^api_airline/(?P<pk>([0-9]+))/$', AirlineDetail.as_view(), name='api_airline'),
+    url(r'^api_flight/(?P<pk>([0-9]+))/$', FlightDetail.as_view(), name='api_flight'),
+    url(r'^api_scheduleflight/(?P<pk>([0-9]+))/$', ScheduleFlightDetail.as_view(), name='api_schedule_flight'),
+    url(r'^api_scheduleflight_list/$', ScheduleFlightList.as_view(), name='api_schedule_flights'),
 ]
