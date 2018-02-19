@@ -3,23 +3,21 @@ from django_filters import FilterSet
 
 from flights.models import ScheduleFlight, Airline, Flight, Airport
 
-flight_queryset = ScheduleFlight.objects.all()
-
 
 def get_airline_queryset(request):
-    return Airline.objects.filter(flight__scheduleflight__in=flight_queryset).distinct()
+    return Airline.objects.filter(flight__scheduleflight__in=ScheduleFlight.objects.all()).distinct()
 
 
 def get_flight_number_queryset(request):
-    return Flight.objects.filter(scheduleflight__in=flight_queryset)
+    return Flight.objects.filter(scheduleflight__in=ScheduleFlight.objects.all()).distinct()
 
 
 def get_departure_queryset(request):
-    return Airport.objects.filter(airport_dep__scheduleflight__in=flight_queryset).distinct()
+    return Airport.objects.filter(airport_dep__scheduleflight__in=ScheduleFlight.objects.all()).distinct()
 
 
 def get_arrival_queryset(request):
-    return Airport.objects.filter(airport_arr__scheduleflight__in=flight_queryset).distinct()
+    return Airport.objects.filter(airport_arr__scheduleflight__in=ScheduleFlight.objects.all()).distinct()
 
 
 class FlightFilter(FilterSet):

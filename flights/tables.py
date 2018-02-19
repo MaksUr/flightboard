@@ -3,7 +3,7 @@ import django_tables2 as tables
 from flights.models import ScheduleFlight
 
 
-class TimeDepartColumn(tables.Column):
+class LocalTimeColumn(tables.Column):
 
     def render(self, record):
         a = record.flight.departure.city.timezone
@@ -12,6 +12,7 @@ class TimeDepartColumn(tables.Column):
 
 
 class AirportColumn(tables.Column):
+
     def render(self, value):
         return value.info
 
@@ -21,8 +22,8 @@ class ScheduleFlightTable(tables.Table):
     duration = tables.Column(accessor='flight.duration')
     departure = AirportColumn(accessor='flight.departure')
     arrival = AirportColumn(accessor='flight.arrival')
-    depart = TimeDepartColumn(verbose_name="Время отправления местное", empty_values=())
-    arrive = TimeDepartColumn(verbose_name="Время прибытия местное", empty_values=())
+    depart_local_time = LocalTimeColumn(verbose_name="Время отправления местное", empty_values=())
+    arrive_local_time = LocalTimeColumn(verbose_name="Время прибытия местное", empty_values=())
 
     class Meta:
         model = ScheduleFlight
@@ -30,11 +31,11 @@ class ScheduleFlightTable(tables.Table):
             'flight',
             'departure',
             'time_of_departure',
-            'depart',
+            'depart_local_time',
             'duration',
             'arrival',
             'time_of_arrival',
-            'arrive',
+            'arrive_local_time',
             'status',
             'arrival_status'
         ]

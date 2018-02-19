@@ -4,10 +4,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
+    <title>Таблица рейсов</title>
 </head>
 <body>
+    <a href="{% url 'arrive' %}">Прибытие</a>
+    <a href="{% url 'depart' %}">Вылет</a>
     <p>Сейчас {{ now }}</p>
     {% if filter %}
         <form action="" method="get" class="form form-inline">

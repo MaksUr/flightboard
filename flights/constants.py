@@ -1,5 +1,10 @@
-AIRPORT_LOCATION = 'SVO'
-TIMEZONE_LOCATION = 'Asia/Yekaterinburg'
+# Настройки города, относительно которого будут показываться таблицы прибытия и вылета.
+LOCATION_CITY_NAME = 'Yekaterinburg'
+LOCATION_CITY_COUNTRY_CODE = 'RU'
+LOCATION_CITY_TIMEZONE = 'Asia/Yekaterinburg'
+LOCATION_AIRPORT_NAME = 'Koltsovo Airport'
+LOCATION_AIRPORT_CODE = 'SVX'
+
 # model City
 CITY_VERBOSE_NAME = 'Город'
 CITY_VERBOSE_NAME_PLURAL = 'Города'
