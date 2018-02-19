@@ -36,11 +36,6 @@ class ArriveFlightList(FlightList):
     flight__arrival__code=LOCATION_AIRPORT_CODE).order_by(SCHEDULE_FLIGHT_TIME_OF_ARRIVAL)
 
 
-class CityDetail(RetrieveUpdateDestroyAPIView):
-    queryset = City.objects.all()
-    serializer_class = CitySerializer
-
-
 class AirportDetail(RetrieveUpdateDestroyAPIView):
     queryset = Airport.objects.all()
     serializer_class = AirportSerializer
@@ -64,4 +59,24 @@ class ScheduleFlightDetail(RetrieveUpdateDestroyAPIView):
 class ScheduleFlightList(ListCreateAPIView):
     queryset = ScheduleFlight.objects.all()
     serializer_class = ScheduleFlightSerializer
+
+
+class CityList(ListCreateAPIView):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
+
+class AirportList(ListCreateAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
+
+
+class AirlineList(ListCreateAPIView):
+    queryset = Airline.objects.all()
+    serializer_class = AirlineSerializer
+
+
+class FlightList(ListCreateAPIView):
+    queryset = Flight.objects.all()
+    serializer_class = FlightSerializer
 

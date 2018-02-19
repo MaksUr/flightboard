@@ -36,4 +36,10 @@ class FlightSerializer(serializers.ModelSerializer):
 class ScheduleFlightSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScheduleFlight
-        fields = '__all__'
+        fields = [
+            "id",
+            "time_of_departure",
+            "status",
+            "flight",
+        ]
+

@@ -16,17 +16,20 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from flights.views import ArriveFlightList, DepartFlightList, CityDetail, AirportDetail, AirlineDetail, FlightDetail, \
-    ScheduleFlightDetail, ScheduleFlightList
+from flights.views import ArriveFlightList, DepartFlightList, AirportDetail, AirlineDetail, FlightDetail, \
+    ScheduleFlightDetail, ScheduleFlightList, CityList, AirportList, AirlineList, FlightList
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', ArriveFlightList.as_view(), name='arrive'),
     url(r'^depart/$', DepartFlightList.as_view(), name='depart'),
-    url(r'^api_city/(?P<pk>([0-9]+))/$', CityDetail.as_view(), name='api_city'),
     url(r'^api_airport/(?P<pk>([0-9]+))/$', AirportDetail.as_view(), name='api_airport'),
     url(r'^api_airline/(?P<pk>([0-9]+))/$', AirlineDetail.as_view(), name='api_airline'),
     url(r'^api_flight/(?P<pk>([0-9]+))/$', FlightDetail.as_view(), name='api_flight'),
     url(r'^api_scheduleflight/(?P<pk>([0-9]+))/$', ScheduleFlightDetail.as_view(), name='api_schedule_flight'),
     url(r'^api_scheduleflight_list/$', ScheduleFlightList.as_view(), name='api_schedule_flights'),
+    url(r'^api_city_list/$', CityList.as_view(), name='api_cities'),
+    url(r'^api_airport_list/$', AirportList.as_view(), name='api_airports'),
+    url(r'^api_airline_list/$', AirlineList.as_view(), name='api_airlines'),
+    url(r'^api_flight_list/$', FlightList.as_view(), name='api_flights'),
 ]
