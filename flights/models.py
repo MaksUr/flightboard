@@ -99,6 +99,3 @@ class ScheduleFlight(models.Model):
             return True
         else:
             return False
-
-
-

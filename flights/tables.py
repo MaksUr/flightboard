@@ -3,9 +3,12 @@ import django_tables2 as tables
 from flights.models import ScheduleFlight
 
 
-class TimeColumn(tables.Column):
-    def render(self, value):
-        return value.info
+class TimeDepartColumn(tables.Column):
+
+    def render(self, record):
+        a = record.flight.departure.city.timezone
+        b = record.time_of_departure
+        return b.astimezone(a)
 
 
 class AirportColumn(tables.Column):
@@ -18,10 +21,23 @@ class ScheduleFlightTable(tables.Table):
     duration = tables.Column(accessor='flight.duration')
     departure = AirportColumn(accessor='flight.departure')
     arrival = AirportColumn(accessor='flight.arrival')
+    depart = TimeDepartColumn(verbose_name="Время отправления местное", empty_values=())
+    arrive = TimeDepartColumn(verbose_name="Время прибытия местное", empty_values=())
 
     class Meta:
         model = ScheduleFlight
-        fields = ['flight', 'departure', 'time_of_departure', 'duration', 'time_of_arrival', 'arrival', 'status', 'arrival_status']
+        fields = [
+            'flight',
+            'departure',
+            'time_of_departure',
+            'depart',
+            'duration',
+            'arrival',
+            'time_of_arrival',
+            'arrive',
+            'status',
+            'arrival_status'
+        ]
 
     def render_arrival_status(self, value):
         if value:
@@ -42,3 +58,4 @@ class ScheduleFlightTable(tables.Table):
             ('-' if is_descending else '') + 'flight__number'
         )
         return queryset, True
+
