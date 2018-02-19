@@ -1,22 +1,26 @@
 {% load render_table from django_tables2 %}
 {% load bootstrap3 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Таблица рейсов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'flights/css/base.css' %}">
 </head>
 <body>
-    <a href="{% url 'arrive' %}">Прибытие</a>
-    <a href="{% url 'depart' %}">Вылет</a>
-    <p>Сейчас {{ now }}</p>
-    {% if filter %}
-        <form action="" method="get" class="form form-inline">
-            {% bootstrap_form filter.form layout='inline' %}
-            {% bootstrap_button 'filter' %}
-        </form>
-    {% endif %}
-    <p>Рейсов: {{ flight_count }}</p>
-    {% render_table table 'django_tables2/bootstrap.html' %}
+    <div class="main">
+        <a href="{% url 'arrive' %}">Прибытие</a>
+        <a href="{% url 'depart' %}">Вылет</a>
+        <p>Сейчас {{ now }}</p>
+        {% if filter %}
+            <form action="" method="get" class="form form-inline">
+                {% bootstrap_form filter.form layout='inline' %}
+                {% bootstrap_button 'filter' %}
+            </form>
+        {% endif %}
+        <p>Рейсов: {{ flight_count }}</p>
+        {% render_table table 'django_tables2/bootstrap.html' %}
+    </div>
 </body>
 </html>
