@@ -60,3 +60,11 @@ class ScheduleFlightTable(tables.Table):
         )
         return queryset, True
 
+    def order_depart_local_time(self, queryset, is_descending):
+        queryset = queryset.order_by(('-' if is_descending else '') + 'time_of_departure')
+        return queryset, True
+
+    def order_arrive_local_time(self, queryset, is_descending):
+        queryset = queryset.order_by(('-' if is_descending else '') + 'time_of_arrival')
+        return queryset, True
+
