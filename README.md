@@ -114,7 +114,7 @@ python manage.py runserver
 ```
 deactivate
 ```
-##Установка uWSGI
+## Установка uWSGI
 ```
 sudo apt-get install python3-dev
 sudo pip3 install uwsgi
@@ -159,7 +159,7 @@ setgid www-data
 
 exec /usr/local/bin/uwsgi --emperor /etc/uwsgi/sites
 ```
-##Настройка Nginx и прокси
+## Настройка Nginx и прокси
 Установим Nginx
 ```
 sudo apt-get install nginx
